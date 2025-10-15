@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>杜浩楠 - Java开发工程师简历</title>
+  <style>
+    /* 全局样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    /* 头部样式 */
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 20px 0;
+      border-bottom: 1px solid #eee;
+    }
+    h1 {
+      font-size: 2.2em;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      font-size: 0.95em;
+      color: #555;
+    }
+    .contact-info span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* 求职意向 */
+    .job-intent {
+      text-align: center;
+      margin: 20px 0;
+      font-style: italic;
+      color: #1a5fb4;
+      font-size: 1.1em;
+    }
+
+    /* 个人简介 */
+    .section {
+      margin-bottom: 30px;
+    }
+    h2 {
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+      font-size: 1.4em;
+    }
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    /* 工作经历 & 项目经验 */
+    .job, .project {
+      margin-bottom: 20px;
+    }
+    .job-title, .project-title {
+      font-weight: bold;
+      color: #2980b9;
+      margin-bottom: 5px;
+      font-size: 1.1em;
+    }
+    .job-company, .project-role {
+      color: #555;
+      margin-bottom: 8px;
+      font-size: 0.95em;
+    }
+    .job-period {
+      color: #777;
+      font-size: 0.9em;
+    }
+    ul {
+      padding-left: 20px;
+      margin-bottom: 10px;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+
+    /* 技术能力表格 */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f6fc;
+      color: #333;
+    }
+
+    /* 自我评价 */
+    .self-eval {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-left: 4px solid #3498db;
+      margin: 20px 0;
+      font-style: italic;
+      color: #555;
+    }
+
+    /* 响应式适配 */
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+      .contact-info {
+        flex-direction: column;
+        align-items: center;
+      }
+      table {
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- 头部信息 -->
+    <header>
+      <h1>杜浩楠</h1>
+      <div class="contact-info">
+        <span>📞 13601332147</span>
+        <span>📧 duhaonan@example.com</span>
+        <span>🏠 北京</span>
+        <span>🎂 1993年</span>
+      </div>
+      <div class="job-intent">
+        求职意向：Java高级开发工程师 / 后端架构师 / 技术负责人
+      </div>
+    </header>
+
+    <!-- 个人简介 -->
+    <section class="section">
+      <h2>个人简介</h2>
+      <p>
+        10年北京一线Java后端开发经验，毕业于内蒙古民族大学计算机科学与技术专业。长期专注于高并发、分布式系统设计与复杂业务系统落地，具备从0到1构建系统、性能调优、微服务化改造及信创国产化迁移的实战能力。熟悉金融、保险、电商等行业业务逻辑，擅长解决系统稳定性、数据一致性与高可用挑战。具备良好的沟通协作能力与团队管理经验，致力于通过技术驱动业务增长与系统持续演进。
+      </p>
+    </section>
+
+    <!-- 工作经历 -->
+    <section class="section">
+      <h2>工作经历</h2>
+      <div class="job">
+        <div class="job-title">XX科技有限公司（可补充公司名称）</div>
+        <div class="job-company">Java高级开发工程师 / 技术负责人</div>
+        <div class="job-period">201X年 – 至今 | 北京</div>
+        <ul>
+          <li>主导多个大型金融与企业级系统的设计与开发，涵盖电商、保险、银行信创改造等核心项目。</li>
+          <li>负责技术方案评审、核心模块编码、性能优化与团队协作，带领3-5人开发小组完成关键系统交付。</li>
+          <li>推动微服务架构落地、容器化部署与DevOps流程建设，提升系统稳定性与交付效率。</li>
+          <li>多次承担跨部门协作任务，与产品、测试、运维及第三方厂商高效对接，保障项目高质量上线。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 项目经验 -->
+    <section class="section">
+      <h2>项目经验</h2>
+
+      <div class="project">
+        <div class="project-title">银行业务系统及信创改造项目</div>
+        <div class="project-role">项目角色：核心开发工程师 / 技术负责人 | 202X年 – 至今</div>
+        <ul>
+          <li>主导数据库迁移方案设计与实施，完成Oracle到达梦的SQL转换与性能调优，迁移120+张表、超2TB数据，零数据丢失。</li>
+          <li>采用Seata AT模式解决分布式事务，事务成功率99.999%。</li>
+          <li>推动K8S容器化改造，部署效率从小时级缩短至5分钟内，资源利用率提升40%。</li>
+          <li>设计国密SM4加密方案，通过等保三级与信创合规审计。</li>
+          <li>构建统一配置中心与链路追踪，故障定位时间缩短至10分钟内。</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-title">保险业务系统及资讯平台</div>
+        <div class="project-role">项目角色：后端开发工程师 / 模块负责人 | 202X年 – 202X年</div>
+        <ul>
+          <li>设计保单状态机引擎，日均处理10万+条变更请求，准确率99.99%。</li>
+          <li>搭建Kafka数据同步管道，数据延迟降至秒级。</li>
+          <li>使用ES构建客户画像系统，资讯点击率提升32%。</li>
+          <li>引入ShardingSphere分库分表，5000万+订单表查询响应<500ms。</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-title">大型电商平台</div>
+        <div class="project-role">项目角色：Java开发工程师 | 201X年 – 202X年</div>
+        <ul>
+          <li>重构订单与购物车模块，QPS提升150%。</li>
+          <li>设计分布式锁解决超卖，支撑5万+并发秒杀。</li>
+          <li>引入RabbitMQ异步处理，TPS从800提升至3500。</li>
+          <li>商品搜索响应<200ms，点击率提升25%。</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-title">校园综合管理系统</div>
+        <div class="project-role">项目角色：Java开发工程师 | 201X年 – 201X年</div>
+        <ul>
+          <li>独立开发学生与成绩模块，日均请求5000+。</li>
+          <li>优化查询性能，响应时间从1.2秒降至300ms。</li>
+          <li>设计RBAC权限模型，支持5类角色与200+权限点。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 教育背景 -->
+    <section class="section">
+      <h2>教育背景</h2>
+      <p><strong>内蒙古民族大学</strong> | 计算机科学与技术专业 | 本科 | 2011年 – 2015年6月</p>
+    </section>
+
+    <!-- 技术能力 -->
+    <section class="section">
+      <h2>技术能力</h2>
+      <table>
+        <tr>
+          <th>类别</th>
+          <th>技术栈与能力</th>
+        </tr>
+        <tr>
+          <td><strong>编程语言</strong></td>
+          <td>Java（精通）、Python（熟悉）</td>
+        </tr>
+        <tr>
+          <td><strong>核心框架</strong></td>
+          <td>Spring Boot、Spring Cloud、Spring Cloud Alibaba、Dubbo、MyBatis</td>
+        </tr>
+        <tr>
+          <td><strong>中间件</strong></td>
+          <td>Redis、Kafka、RabbitMQ、Nacos、Seata、xxl-job</td>
+        </tr>
+        <tr>
+          <td><strong>数据库</strong></td>
+          <td>MySQL、Oracle、达梦数据库（DM）、MongoDB、Elasticsearch</td>
+        </tr>
+        <tr>
+          <td><strong>架构与部署</strong></td>
+          <td>微服务架构、分布式事务、分库分表、Docker、Kubernetes、CI/CD</td>
+        </tr>
+        <tr>
+          <td><strong>工具与平台</strong></td>
+          <td>Git、Maven、Jenkins、ELK、Prometheus+Grafana、JMeter、Nginx</td>
+        </tr>
+        <tr>
+          <td><strong>行业知识</strong></td>
+          <td>电商、保险、银行、信创政策、金融合规、数据安全</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- 自我评价 -->
+    <section class="section">
+      <h2>自我评价</h2>
+      <div class="self-eval">
+        踏实严谨，热爱技术，具备强烈的责任心与抗压能力。善于总结与分享，乐于推动团队技术成长。始终保持对新技术的学习热情，关注云原生、高并发、数据安全等前沿方向，致力于成为兼具技术深度与业务视野的高级技术人才。
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>
