@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重生之校园复仇记 - 青春虐恋爽剧</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcf7f);
+            border-radius: 2px;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            animation: titleGlow 2s ease-in-out infinite alternate;
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d, #6bcf7f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .header .tagline {
+            font-size: 1rem;
+            opacity: 0.8;
+            font-style: italic;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .story-intro {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcf7f);
+        }
+
+        .story-intro h2 {
+            font-size: 2.5rem;
+            color: #d63031;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .story-intro h2::after {
+            content: '💔';
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 2rem;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        .story-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #ff6b6b;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .highlight::before {
+            content: '⚡';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 1.5rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .character-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .character-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcf7f);
+        }
+
+        .character-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .character-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 20px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .character-name {
+            font-size: 1.5rem;
+            color: #d63031;
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .character-role {
+            color: #666;
+            text-align: center;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .character-desc {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .plot-points {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .plot-points h2 {
+            font-size: 2.2rem;
+            color: #d63031;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .plot-timeline {
+            position: relative;
+        }
+
+        .plot-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #ff6b6b, #ffd93d, #6bcf7f);
+            border-radius: 2px;
+        }
+
+        .plot-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 80px;
+        }
+
+        .plot-item::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 3px #ff6b6b;
+        }
+
+        .plot-item:nth-child(2)::before {
+            background: #ffd93d;
+            box-shadow: 0 0 0 3px #ffd93d;
+        }
+
+        .plot-item:nth-child(3)::before {
+            background: #6bcf7f;
+            box-shadow: 0 0 0 3px #6bcf7f;
+        }
+
+        .plot-title {
+            font-size: 1.3rem;
+            color: #d63031;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .plot-desc {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+            border-radius: 25px;
+            padding: 40px;
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-button:hover {
+            background: white;
+            color: #ff6b6b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .social-share {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .social-share h3 {
+            color: #d63031;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-button {
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .share-button.wechat {
+            background: #07c160;
+        }
+
+        .share-button.weibo {
+            background: #e6162d;
+        }
+
+        .share-button.qq {
+            background: #12b7f5;
+        }
+
+        .share-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        @keyframes titleGlow {
+            0% { text-shadow: 3px 3px 6px rgba(0,0,0,0.4); }
+            100% { text-shadow: 3px 3px 6px rgba(0,0,0,0.4), 0 0 20px rgba(255,107,107,0.5); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .characters-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .story-intro, .plot-points, .cta-section {
+                padding: 20px;
+            }
+            
+            .character-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>重生之校园复仇记</h1>
+            <p class="subtitle">青春虐恋 · 重生复仇 · 校园爽剧</p>
+            <p class="tagline">"这一次，我要让所有人都付出代价！"</p>
+        </header>
+
+        <div class="story-intro">
+            <h2>💔 故事简介</h2>
+            <div class="story-content">
+                <p>林晓雨，一个普通的高中生，因为一场意外重生回到了三年前。前世，她被最信任的闺蜜背叛，被心爱的男生利用，最终惨死在校园霸凌中。</p>
+                
+                <div class="highlight">
+                    <strong>⚡ 重生归来，她不再是那个任人宰割的小白兔！</strong><br>
+                    这一次，她要让所有伤害过她的人付出代价。学霸身份、校花地位、完美男友...她要夺回属于自己的一切！
+                </div>
+                
+                <p>但是，当她重新面对那个曾经深爱过的男生时，内心的仇恨与爱意交织，她该如何选择？复仇的路上，她能否保持初心？</p>
+            </div>
+        </div>
+
+        <div class="characters-grid">
+            <div class="character-card">
+                <div class="character-avatar">👩</div>
+                <h3 class="character-name">林晓雨</h3>
+                <p class="character-role">女主角 · 重生复仇者</p>
+                <p class="character-desc">前世惨死，重生归来。从软弱可欺的小白兔变成腹黑复仇女王。拥有前世的记忆，知道所有人的秘密，这一次她要掌控全局。</p>
+            </div>
+
+            <div class="character-card">
+                <div class="character-avatar">👨</div>
+                <h3 class="character-name">顾北辰</h3>
+                <p class="character-role">男主角 · 校草学霸</p>
+                <p class="character-desc">前世利用林晓雨，这一世却对她产生了真正的感情。当他知道林晓雨的真实身份后，会如何选择？爱恨交织的虐恋即将开始。</p>
+            </div>
+
+            <div class="character-card">
+                <div class="character-avatar">👩</div>
+                <h3 class="character-name">苏雅</h3>
+                <p class="character-role">恶毒女配 · 前闺蜜</p>
+                <p class="character-desc">前世背叛林晓雨，这一世继续作妖。表面温柔善良，内心阴险毒辣。林晓雨最大的敌人，也是她复仇的主要目标。</p>
+            </div>
+
+            <div class="character-card">
+                <div class="character-avatar">👨</div>
+                <h3 class="character-name">陆子轩</h3>
+                <p class="character-role">神秘转学生</p>
+                <p class="character-desc">突然转学而来的神秘男生，似乎知道林晓雨的秘密。他的真实身份是什么？是敌是友？</p>
+            </div>
+        </div>
+
+        <div class="plot-points">
+            <h2>🔥 精彩剧情预告</h2>
+            <div class="plot-timeline">
+                <div class="plot-item">
+                    <h3 class="plot-title"><a href="第一章-重生归来.html" style="color: #d63031; text-decoration: none;">第一章：重生归来</a></h3>
+                    <p class="plot-desc">林晓雨重生回到三年前，发现自己回到了被霸凌的那一天。这一次，她不再忍让，直接反击，震惊了所有人。</p>
+                </div>
+                <div class="plot-item">
+                    <h3 class="plot-title"><a href="第二章-学霸逆袭.html" style="color: #d63031; text-decoration: none;">第二章：学霸逆袭</a></h3>
+                    <p class="plot-desc">利用前世的记忆，林晓雨在考试中一鸣惊人，从学渣变成学霸，夺回了属于她的荣耀。</p>
+                </div>
+                <div class="plot-item">
+                    <h3 class="plot-title"><a href="第三章-复仇开始.html" style="color: #d63031; text-decoration: none;">第三章：复仇开始</a></h3>
+                    <p class="plot-desc">开始对前世伤害过她的人进行报复，苏雅的秘密被曝光，校园霸凌者受到惩罚。</p>
+                </div>
+                <div class="plot-item">
+                    <h3 class="plot-title"><a href="第四章-爱恨交织.html" style="color: #d63031; text-decoration: none;">第四章：爱恨交织</a></h3>
+                    <p class="plot-desc">顾北辰对林晓雨产生感情，但林晓雨内心充满仇恨。两人的感情线将如何发展？</p>
+                </div>
+                <div class="plot-item">
+                    <h3 class="plot-title"><a href="第五章-真相大白.html" style="color: #d63031; text-decoration: none;">第五章：真相大白</a></h3>
+                    <p class="plot-desc">林晓雨的真实身份被揭露，所有人都知道了她的秘密。她该如何面对？</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>💖 追更指南</h2>
+            <p>每周更新3章，精彩剧情不容错过！</p>
+            <div class="cta-buttons">
+                <a href="#" class="cta-button">📖 立即阅读</a>
+                <a href="#" class="cta-button">🔔 订阅更新</a>
+                <a href="#" class="cta-button">💬 加入讨论</a>
+                <a href="#" class="cta-button">⭐ 收藏作品</a>
+                <a href="故事文案.html" class="cta-button">📝 故事文案</a>
+            </div>
+        </div>
+
+        <div class="social-share">
+            <h3>📱 分享给朋友</h3>
+            <div class="share-buttons">
+                <a href="#" class="share-button wechat">微信分享</a>
+                <a href="#" class="share-button weibo">微博分享</a>
+                <a href="#" class="share-button qq">QQ分享</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

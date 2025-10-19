@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第五章：真相大白 - 重生之校园复仇记</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+            animation: titleGlow 2s ease-in-out infinite alternate;
+        }
+
+        .header .chapter-info {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .header .back-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .header .back-link:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        .chapter-content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chapter-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcf7f);
+        }
+
+        .chapter-title {
+            font-size: 2.5rem;
+            color: #d63031;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .chapter-title::after {
+            content: '💥';
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 2rem;
+            animation: explosion 2s ease-in-out infinite;
+        }
+
+        .story-text {
+            font-size: 1.2rem;
+            line-height: 2;
+            color: #555;
+            margin-bottom: 30px;
+            text-indent: 2em;
+        }
+
+        .highlight-dialogue {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #ff6b6b;
+            margin: 25px 0;
+            position: relative;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: #d63031;
+            font-weight: 600;
+        }
+
+        .highlight-dialogue::before {
+            content: '💬';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 1.5rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+
+        .scene-break {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 1.5rem;
+            color: #d63031;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .scene-break::before,
+        .scene-break::after {
+            content: '💥';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            animation: explosion 2s ease-in-out infinite;
+        }
+
+        .scene-break::before {
+            left: 20%;
+        }
+
+        .scene-break::after {
+            right: 20%;
+        }
+
+        .character-focus {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            border: 3px solid #ff6b6b;
+            position: relative;
+        }
+
+        .character-focus::before {
+            content: '👩';
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+            border: 3px solid #ff6b6b;
+        }
+
+        .character-focus h3 {
+            color: #d63031;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .character-focus p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .truth-scene {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            border: 3px solid #ff6b6b;
+            position: relative;
+        }
+
+        .truth-scene::before {
+            content: '💥';
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+            border: 3px solid #ff6b6b;
+        }
+
+        .truth-scene h3 {
+            color: #d63031;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .truth-scene p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .next-chapter {
+            background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+            border-radius: 25px;
+            padding: 40px;
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .next-chapter::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .next-chapter h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .next-chapter p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .next-chapter .next-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .next-chapter .next-button:hover {
+            background: white;
+            color: #ff6b6b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        @keyframes titleGlow {
+            0% { text-shadow: 3px 3px 6px rgba(0,0,0,0.4); }
+            100% { text-shadow: 3px 3px 6px rgba(0,0,0,0.4), 0 0 20px rgba(255,107,107,0.5); }
+        }
+
+        @keyframes explosion {
+            0%, 100% { transform: translateY(-50%) scale(1); }
+            50% { transform: translateY(-50%) scale(1.3); }
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .chapter-content {
+                padding: 20px;
+            }
+            
+            .story-text {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>第五章：真相大白</h1>
+            <p class="chapter-info">重生之校园复仇记</p>
+            <a href="重生复仇漫画.html" class="back-link">← 返回目录</a>
+        </header>
+
+        <div class="chapter-content">
+            <h2 class="chapter-title">💥 真相大白</h2>
+            
+            <div class="story-text">
+                林晓雨站在教室门口，看着里面熟悉的面孔。她知道，从今天开始，她的真实身份将被揭露，所有人都将知道她的秘密。
+            </div>
+
+            <div class="highlight-dialogue">
+                "林晓雨，你最近怎么变得这么厉害了？"苏雅走过来，脸上带着假惺惺的笑容。
+            </div>
+
+            <div class="story-text">
+                林晓雨淡淡地看了她一眼，前世，她会被这个笑容欺骗，但这一次，她看透了苏雅的真面目。她知道，苏雅一直在背后捅刀子，这一次，她要让苏雅知道什么叫真正的痛苦。
+            </div>
+
+            <div class="scene-break">
+                💥 真相大白 💥
+            </div>
+
+            <div class="truth-scene">
+                <h3>林晓雨的秘密</h3>
+                <p>林晓雨知道，她的真实身份即将被揭露。她知道，所有人都将知道她的秘密，但这一次，她不会再害怕了。</p>
+            </div>
+
+            <div class="story-text">
+                林晓雨开始行动了。她利用前世的记忆，知道苏雅在背后说了哪些人的坏话，也知道苏雅最害怕什么。
+            </div>
+
+            <div class="highlight-dialogue">
+                "苏雅，我听说你昨天在背后说李明的坏话？"林晓雨故意大声说道。
+            </div>
+
+            <div class="story-text">
+                苏雅脸色瞬间变得苍白，她没想到林晓雨会知道这件事。她一直以为自己做得很隐秘，没想到还是被发现了。
+            </div>
+
+            <div class="highlight-dialogue">
+                "我...我没有..."苏雅结结巴巴地说道。
+            </div>
+
+            <div class="story-text">
+                林晓雨冷笑一声，她知道苏雅在撒谎。前世，苏雅就是这样欺骗她的，这一次，她不会再上当了。
+            </div>
+
+            <div class="character-focus">
+                <h3>林晓雨的内心独白</h3>
+                <p>"苏雅，你不是一直想当校花吗？这一次，我要让你知道什么叫真正的校花！"</p>
+                <p>"还有你们所有人，我要让你们知道，我林晓雨不是废物，我是天才！"</p>
+            </div>
+
+            <div class="story-text">
+                林晓雨继续揭露苏雅的真面目。她知道，苏雅最害怕的就是被人知道她的真面目，这一次，她要让所有人都知道苏雅是什么样的人。
+            </div>
+
+            <div class="highlight-dialogue">
+                "苏雅，你不是一直说张强喜欢你吗？怎么现在又说他不喜欢你了？"林晓雨继续问道。
+            </div>
+
+            <div class="story-text">
+                苏雅的脸色更加苍白了，她没想到林晓雨会知道这么多。她一直以为自己做得很隐秘，没想到还是被发现了。
+            </div>
+
+            <div class="scene-break">
+                💥 真相大白 💥
+            </div>
+
+            <div class="story-text">
+                林晓雨的话让所有人都震惊了。他们没想到苏雅会是这样的人，更没想到林晓雨会知道这么多。
+            </div>
+
+            <div class="highlight-dialogue">
+                "苏雅，你真的在背后说我们的坏话？"李明走过来，脸上带着愤怒。
+            </div>
+
+            <div class="story-text">
+                苏雅看着李明，心中涌起复杂的情绪。她知道，自己的秘密被发现了，这一次，她再也无法隐瞒了。
+            </div>
+
+            <div class="highlight-dialogue">
+                "我...我不是故意的..."苏雅结结巴巴地说道。
+            </div>
+
+            <div class="story-text">
+                林晓雨冷笑一声，她知道苏雅在撒谎。前世，苏雅就是这样欺骗她的，这一次，她不会再上当了。
+            </div>
+
+            <div class="character-focus">
+                <h3>林晓雨的胜利</h3>
+                <p>"苏雅，你不是一直想当校花吗？现在知道什么叫真正的校花了吧？"</p>
+                <p>"还有你们所有人，我要让你们知道，我林晓雨不是废物，我是天才！"</p>
+            </div>
+
+            <div class="story-text">
+                林晓雨的话让所有人都震惊了。他们没想到苏雅会是这样的人，更没想到林晓雨会知道这么多。
+            </div>
+
+            <div class="highlight-dialogue">
+                "苏雅，你真的在背后说我们的坏话？"张强也走过来，脸上带着愤怒。
+            </div>
+
+            <div class="story-text">
+                苏雅看着张强，心中涌起复杂的情绪。她知道，自己的秘密被发现了，这一次，她再也无法隐瞒了。
+            </div>
+
+            <div class="scene-break">
+                🌟 新的开始 🌟
+            </div>
+
+            <div class="story-text">
+                林晓雨站在教室门口，看着里面熟悉的面孔。她知道，从今天开始，她的人生将彻底改变。这一次，她要掌控自己的命运，让所有伤害过她的人付出代价。
+            </div>
+
+            <div class="highlight-dialogue">
+                "林晓雨，我们能做朋友吗？"一个曾经欺负过她的同学走过来，脸上带着讨好的笑容。
+            </div>
+
+            <div class="story-text">
+                林晓雨看着这个曾经让她痛苦的人，心中涌起复杂的情绪。前世，她多么渴望得到他们的友谊，但换来的却是背叛和伤害。
+            </div>
+
+            <div class="highlight-dialogue">
+                "朋友？"林晓雨淡淡地笑了笑，"你们配吗？"
+            </div>
+
+            <div class="story-text">
+                说完，林晓雨头也不回地离开了。她知道，这只是开始，她的复仇之路还很长...
+            </div>
+        </div>
+
+        <div class="next-chapter">
+            <h2>🔥 精彩继续</h2>
+            <p>林晓雨的复仇之路还将继续，更多精彩剧情敬请期待！</p>
+            <a href="重生复仇漫画.html" class="next-button">返回目录</a>
+        </div>
+    </div>
+</body>
+</html>
