@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内蒙古捡菜旅游 - 丰收季免费捡菜指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 50%, #4ecdc4 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .header .subtitle {
+            font-size: 1rem;
+            margin-top: 10px;
+            opacity: 0.8;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .routes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .route-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .route-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .route-title {
+            font-size: 1.8rem;
+            color: #d63031;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .route-icon {
+            font-size: 2rem;
+        }
+
+        .route-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .route-details {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .detail-value {
+            color: #d63031;
+        }
+
+        .route-tips {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .tips-title {
+            font-weight: 600;
+            color: #d63031;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .tips-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .tips-list li:before {
+            content: "🍂";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .weather-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .weather-title {
+            font-size: 2rem;
+            color: #d63031;
+            margin-bottom: 20px;
+        }
+
+        .weather-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .weather-item {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .weather-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .routes-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .route-card {
+                padding: 20px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .route-title {
+                font-size: 1.5rem;
+            }
+            
+            .weather-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🥔 内蒙古捡菜旅游</h1>
+            <p>丰收季免费捡菜，体验田园乐趣</p>
+            <p class="subtitle">在内蒙古的农田里，挖呀挖呀挖！</p>
+        </header>
+
+        <div class="weather-section">
+            <h2 class="weather-title">🌾 今日捡菜指数</h2>
+            <div class="weather-info">
+                <div class="weather-item">
+                    <div class="weather-icon">🥔</div>
+                    <h3>土豆收获指数</h3>
+                    <p>95% - 最佳捡菜期</p>
+                </div>
+                <div class="weather-item">
+                    <div class="weather-icon">🌽</div>
+                    <h3>玉米收获指数</h3>
+                    <p>90% - 可以捡漏</p>
+                </div>
+                <div class="weather-item">
+                    <div class="weather-icon">🌡️</div>
+                    <h3>温度</h3>
+                    <p>15°C - 适合户外</p>
+                </div>
+                <div class="weather-item">
+                    <div class="weather-icon">☀️</div>
+                    <h3>天气</h3>
+                    <p>晴朗 - 适合捡菜</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="routes-grid">
+            <div class="route-card">
+                <h2 class="route-title">
+                    <span class="route-icon">🥔</span>
+                    多伦县土豆田
+                </h2>
+                <p class="route-description">
+                    锡林郭勒盟多伦县是内蒙古土豆种植大县，秋收后农田里散落着大量土豆，是"土豆猎人"们的寻宝天堂。
+                </p>
+                <div class="route-details">
+                    <div class="detail-item">
+                        <span class="detail-label">种植面积</span>
+                        <span class="detail-value">50万亩</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">捡菜时间</span>
+                        <span class="detail-value">2-4小时</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">收获量</span>
+                        <span class="detail-value">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">最佳时间</span>
+                        <span class="detail-value">9月末-10月中旬</span>
+                    </div>
+                </div>
+                <div class="route-tips">
+                    <h3 class="tips-title">
+                        <span>💡</span>
+                        捡菜小贴士
+                    </h3>
+                    <ul class="tips-list">
+                        <li>建议携带小铲子或手套，方便挖掘</li>
+                        <li>选择刚收获完的农田，土豆更多</li>
+                        <li>可以联系当地农户，了解具体位置</li>
+                        <li>注意保护农田，不要踩踏未收获的作物</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="route-card">
+                <h2 class="route-title">
+                    <span class="route-icon">🌽</span>
+                    赤峰玉米田
+                </h2>
+                <p class="route-description">
+                    赤峰地区是内蒙古重要的玉米产区，秋收后农田里散落着大量玉米棒，是体验丰收乐趣的好去处。
+                </p>
+                <div class="route-details">
+                    <div class="detail-item">
+                        <span class="detail-label">种植面积</span>
+                        <span class="detail-value">80万亩</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">捡菜时间</span>
+                        <span class="detail-value">1-3小时</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">收获量</span>
+                        <span class="detail-value">⭐⭐⭐⭐</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">最佳时间</span>
+                        <span class="detail-value">10月上旬-中旬</span>
+                    </div>
+                </div>
+                <div class="route-tips">
+                    <h3 class="tips-title">
+                        <span>💡</span>
+                        捡菜小贴士
+                    </h3>
+                    <ul class="tips-list">
+                        <li>玉米棒较重，建议携带袋子或篮子</li>
+                        <li>选择刚收获完的农田，玉米更多</li>
+                        <li>可以体验剥玉米的乐趣</li>
+                        <li>注意区分已收获和未收获的农田</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="route-card">
+                <h2 class="route-title">
+                    <span class="route-icon">🥕</span>
+                    呼和浩特胡萝卜田
+                </h2>
+                <p class="route-description">
+                    呼和浩特周边地区种植大量胡萝卜，秋收后农田里散落着各种大小的胡萝卜，是亲子捡菜的好选择。
+                </p>
+                <div class="route-details">
+                    <div class="detail-item">
+                        <span class="detail-label">种植面积</span>
+                        <span class="detail-value">30万亩</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">捡菜时间</span>
+                        <span class="detail-value">1-2小时</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">收获量</span>
+                        <span class="detail-value">⭐⭐⭐</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">最佳时间</span>
+                        <span class="detail-value">10月中旬-下旬</span>
+                    </div>
+                </div>
+                <div class="route-tips">
+                    <h3 class="tips-title">
+                        <span>💡</span>
+                        捡菜小贴士
+                    </h3>
+                    <ul class="tips-list">
+                        <li>胡萝卜需要小心挖掘，避免折断</li>
+                        <li>可以让孩子参与，培养劳动意识</li>
+                        <li>选择大小适中的胡萝卜</li>
+                        <li>注意清洗后再食用</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="route-card">
+                <h2 class="route-title">
+                    <span class="route-icon">🥬</span>
+                    包头白菜田
+                </h2>
+                <p class="route-description">
+                    包头地区种植大量白菜，秋收后农田里散落着各种大小的白菜，是体验北方秋收的好去处。
+                </p>
+                <div class="route-details">
+                    <div class="detail-item">
+                        <span class="detail-label">种植面积</span>
+                        <span class="detail-value">40万亩</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">捡菜时间</span>
+                        <span class="detail-value">1-2小时</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">收获量</span>
+                        <span class="detail-value">⭐⭐⭐⭐</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">最佳时间</span>
+                        <span class="detail-value">10月下旬-11月初</span>
+                    </div>
+                </div>
+                <div class="route-tips">
+                    <h3 class="tips-title">
+                        <span>💡</span>
+                        捡菜小贴士
+                    </h3>
+                    <ul class="tips-list">
+                        <li>白菜较重，建议携带推车或篮子</li>
+                        <li>选择新鲜的白菜，避免腐烂的</li>
+                        <li>可以体验腌制白菜的乐趣</li>
+                        <li>注意保护农田，不要踩踏作物</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 信息收集表单 -->
+        <div class="weather-section">
+            <h2 class="weather-title">📝 捡菜信息收集</h2>
+            <div style="max-width: 600px; margin: 0 auto;">
+                <form style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px);">
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; color: white; font-weight: 600;">姓名</label>
+                        <input type="text" style="width: 100%; padding: 12px; border: none; border-radius: 10px; font-size: 16px;" placeholder="请输入您的姓名">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; color: white; font-weight: 600;">联系方式</label>
+                        <input type="tel" style="width: 100%; padding: 12px; border: none; border-radius: 10px; font-size: 16px;" placeholder="请输入手机号码">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; color: white; font-weight: 600;">感兴趣的地区</label>
+                        <select style="width: 100%; padding: 12px; border: none; border-radius: 10px; font-size: 16px;">
+                            <option>多伦县土豆田</option>
+                            <option>赤峰玉米田</option>
+                            <option>呼和浩特胡萝卜田</option>
+                            <option>包头白菜田</option>
+                            <option>其他地区</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; color: white; font-weight: 600;">预计参与时间</label>
+                        <input type="date" style="width: 100%; padding: 12px; border: none; border-radius: 10px; font-size: 16px;">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; color: white; font-weight: 600;">参与人数</label>
+                        <input type="number" style="width: 100%; padding: 12px; border: none; border-radius: 10px; font-size: 16px;" placeholder="请输入参与人数" min="1">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; color: white; font-weight: 600;">备注信息</label>
+                        <textarea style="width: 100%; padding: 12px; border: none; border-radius: 10px; font-size: 16px; height: 80px; resize: vertical;" placeholder="请输入其他需要说明的信息"></textarea>
+                    </div>
+                    <button type="submit" style="width: 100%; padding: 15px; background: linear-gradient(135deg, #ff6b6b, #ff9a56); color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                        提交信息
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- 联系方式 -->
+        <div class="weather-section">
+            <h2 class="weather-title">📞 联系我们</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; text-align: center; backdrop-filter: blur(10px);">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">📱</div>
+                    <h3 style="color: white; margin-bottom: 10px;">客服热线</h3>
+                    <p style="color: white; font-size: 1.2rem;">400-888-9999</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; text-align: center; backdrop-filter: blur(10px);">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">💬</div>
+                    <h3 style="color: white; margin-bottom: 10px;">微信咨询</h3>
+                    <p style="color: white; font-size: 1.2rem;">InnerMongolia_Travel</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; text-align: center; backdrop-filter: blur(10px);">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">📧</div>
+                    <h3 style="color: white; margin-bottom: 10px;">邮箱联系</h3>
+                    <p style="color: white; font-size: 1.2rem;">travel@innermongolia.com</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; text-align: center; backdrop-filter: blur(10px);">
+                    <div style="font-size: 2rem; margin-bottom: 10px;">📍</div>
+                    <h3 style="color: white; margin-bottom: 10px;">办公地址</h3>
+                    <p style="color: white; font-size: 1.2rem;">呼和浩特市新城区</p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <h3>🥔 在内蒙古的农田里，挖呀挖呀挖！</h3>
+            <p>丰收季免费捡菜，体验田园乐趣</p>
+            <p style="margin-top: 15px; opacity: 0.8;">
+                © 2024 内蒙古捡菜旅游 | 用心记录每一个丰收季
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
